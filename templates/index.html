@@ -2,109 +2,60 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Forest Fire Analysis | Welcome</title>
+    <title>Forest Fire Intelligence | Documentation</title>
     <style>
-        :root {
-            --primary: #2563eb;
-            --bg: #f8fafc;
-            --card: #ffffff;
-            --text-main: #1e293b;
-            --text-sub: #64748b;
-        }
-        body {
-            background-color: var(--bg);
-            color: var(--text-main);
-            font-family: 'Inter', -apple-system, sans-serif;
-            margin: 0;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-        .welcome-card {
-            text-align: center;
-            max-width: 600px;
-            padding: 60px 40px;
-            background: var(--card);
-            border-radius: 20px;
-            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
-            border: 1px solid #e2e8f0;
-        }
-        h1 {
-            font-size: 2.5rem;
-            margin-bottom: 15px;
-            color: var(--text-main);
-            letter-spacing: -1px;
-        }
-        h1 span {
-            color: var(--primary);
-        }
-        p {
-            color: var(--text-sub);
-            font-size: 1.1rem;
-            line-height: 1.6;
-            margin-bottom: 40px;
-        }
-        .btn-start {
-            background: var(--primary);
-            color: white;
-            padding: 16px 40px;
-            border-radius: 8px;
-            text-decoration: none;
-            font-weight: 700;
-            font-size: 1.1rem;
-            transition: all 0.2s ease;
-            display: inline-block;
-        }
-        .btn-start:hover {
-            background: #1d4ed8;
-            transform: translateY(-2px);
-            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
-        }
-        .footer-info {
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid #f1f5f9;
-            display: flex;
-            justify-content: space-around;
-            color: var(--text-sub);
-            font-size: 0.9rem;
-        }
-        .stat-item b {
-            display: block;
-            color: var(--text-main);
-            font-size: 1.1rem;
-        }
+        :root { --primary: #2ecc71; --bg: #0a0a0a; --card: #151515; --text: #ffffff; --sub: #888; }
+        body { background: var(--bg); color: var(--text); font-family: 'Segoe UI', sans-serif; margin: 0; padding: 40px 20px; }
+        .welcome-card { max-width: 800px; margin: 0 auto; padding: 40px; background: var(--card); border-radius: 20px; border: 1px solid var(--primary); box-shadow: 0 0 30px rgba(46, 204, 113, 0.1); }
+        h1 { color: var(--primary); text-align: center; text-transform: uppercase; letter-spacing: 2px; }
+        .intro { text-align: center; color: var(--sub); margin-bottom: 40px; line-height: 1.6; }
+        
+        /* Glossary Styles */
+        .glossary { display: grid; grid-template-columns: 1fr 1fr; gap: 20px; margin-bottom: 40px; }
+        .feature-item { background: #000; padding: 20px; border-radius: 12px; border-left: 4px solid var(--primary); }
+        .feature-title { color: var(--primary); font-weight: bold; font-size: 1.1rem; margin-bottom: 8px; display: block; }
+        .feature-desc { font-size: 0.9rem; color: #ccc; line-height: 1.4; }
+        
+        .btn-box { text-align: center; }
+        .btn { background: var(--primary); color: #000; padding: 18px 50px; border-radius: 12px; text-decoration: none; font-weight: 900; text-transform: uppercase; transition: 0.3s; display: inline-block; }
+        .btn:hover { background: #27ae60; box-shadow: 0 0 20px #2ecc71; transform: translateY(-3px); }
     </style>
 </head>
 <body>
-
     <div class="welcome-card">
-        <h1>Algerian <span>Forest Fire</span> <br>Prediction System</h1>
-        <p>
-            An intelligent dashboard for monitoring and predicting the 
-            <b>Fire Weather Index (FWI)</b>. By analyzing meteorological data 
-            from the Bejaia and Sidi-Bel Abbes regions, we help assess wildfire risk levels accurately.
-        </p>
+        <h1>System Documentation</h1>
+        <p class="intro">Before using the predictor, understand the meteorological parameters that drive our Ridge Regression model.</p>
 
-        <a href="/predictdata" class="btn-start">Open FWI Predictor</a>
-
-        <div class="footer-info">
-            <div class="stat-item">
-                <b>Accuracy</b>
-                Ridge Regression
+        <div class="glossary">
+            <div class="feature-item">
+                <span class="feature-title">Temperature & RH</span>
+                <span class="feature-desc">Ambient air temperature and Relative Humidity. High heat and low humidity dry out forest fuels, making them highly flammable.</span>
             </div>
-            <div class="stat-item">
-                <b>Regions</b>
-                Bejaia & Sidi-Bel
+            <div class="feature-item">
+                <span class="feature-title">Ws (Wind Speed)</span>
+                <span class="feature-desc">Wind supplies oxygen to fire and helps it spread faster. High Ws values exponentially increase the fire spread rate.</span>
             </div>
-            <div class="stat-item">
-                <b>Model</b>
-                Standardized ML
+            <div class="feature-item">
+                <span class="feature-title">FFMC (Fine Fuel Moisture Code)</span>
+                <span class="feature-desc">Represents the moisture content of litter and other cured fine fuels. It indicates how easily a fire can start.</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-title">DMC (Duff Moisture Code)</span>
+                <span class="feature-desc">Represents the moisture of loosely compacted organic layers. It helps predict the consumption of fuel in moderate-depth layers.</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-title">ISI (Initial Spread Index)</span>
+                <span class="feature-desc">A numerical rating of the expected rate of fire spread. It combines the effects of wind and FFMC.</span>
+            </div>
+            <div class="feature-item">
+                <span class="feature-title">FWI (Fire Weather Index)</span>
+                <span class="feature-desc">The final score. It is a general index of fire intensity, used to determine the overall danger level of the forest.</span>
             </div>
         </div>
-    </div>
 
+        <div class="btn-box">
+            <a href="/predictdata" class="btn">Launch Predictor Terminal</a>
+        </div>
+    </div>
 </body>
 </html>
