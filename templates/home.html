@@ -1,23 +1,124 @@
-<html>
-    <body>
-        <div class="login">
-            <h1>FWI Prediction</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FWI Prediction</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-            <form action="{{ url_for('predict_datapoint') }}" method="post">
-                <input type="text" name="Temperature" placeholder="Temperature" required><br>
-                <input type="text" name="RH" placeholder="RH" required><br>
-                <input type="text" name="WS" placeholder="WS" required><br>
-                <input type="text" name="Rain" placeholder="Rain" required><br>
-                <input type="text" name="FFMC" placeholder="FFMC" required><br>
-                <input type="text" name="DMC" placeholder="DMC" required><br>
-                <input type="text" name="ISI" placeholder="ISI" required><br>
-                <input type="text" name="Classes" placeholder="Classes" required><br>
-                <input type="text" name="Region" placeholder="Region" required><br>
+    <style>
+        body {
+            margin: 0;
+            min-height: 100vh;
+            background: linear-gradient(135deg, #05070a, #0b1320);
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+        }
 
-                <button type="submit">Predict</button>
-            </form>
+        .container {
+            width: 100%;
+            max-width: 900px;
+            background: rgba(255,255,255,0.04);
+            backdrop-filter: blur(14px);
+            border-radius: 20px;
+            padding: 40px;
+            box-shadow: 0 0 40px rgba(0,0,0,0.8);
+            animation: slideUp 1s ease;
+        }
 
-            <h2>THE FWI Prediction is {{ results }}</h2>
-        </div>
-    </body>
+        h1 {
+            text-align: center;
+            margin-bottom: 30px;
+            color: #00ffc6;
+        }
+
+        form {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 15px;
+        }
+
+        input {
+            padding: 12px;
+            border-radius: 10px;
+            border: none;
+            background: #0f172a;
+            color: white;
+            outline: none;
+            font-size: 14px;
+        }
+
+        input::placeholder {
+            color: #94a3b8;
+        }
+
+        button {
+            grid-column: 1 / -1;
+            margin-top: 15px;
+            padding: 14px;
+            background: linear-gradient(135deg, #00ffc6, #00b4ff);
+            border: none;
+            border-radius: 14px;
+            font-size: 16px;
+            font-weight: bold;
+            cursor: pointer;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        button:hover {
+            transform: translateY(-3px);
+            box-shadow: 0 0 25px #00ffc6;
+        }
+
+        .result {
+            margin-top: 30px;
+            text-align: center;
+            font-size: 1.4rem;
+            padding: 20px;
+            border-radius: 15px;
+            background: rgba(0,255,198,0.08);
+            border: 1px solid rgba(0,255,198,0.3);
+            animation: glow 2s infinite alternate;
+        }
+
+        @keyframes slideUp {
+            from { opacity: 0; transform: translateY(50px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+
+        @keyframes glow {
+            from { box-shadow: 0 0 10px rgba(0,255,198,0.4); }
+            to { box-shadow: 0 0 25px rgba(0,255,198,0.9); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="container">
+    <h1>🔥 Forest Weather Index Prediction</h1>
+
+    <form action="{{ url_for('predict_datapoint') }}" method="post">
+        <input type="number" step="any" name="Temperature" placeholder="Temperature" required>
+        <input type="number" step="any" name="RH" placeholder="Relative Humidity" required>
+        <input type="number" step="any" name="WS" placeholder="Wind Speed" required>
+        <input type="number" step="any" name="Rain" placeholder="Rainfall" required>
+        <input type="number" step="any" name="FFMC" placeholder="FFMC" required>
+        <input type="number" step="any" name="DMC" placeholder="DMC" required>
+        <input type="number" step="any" name="ISI" placeholder="ISI" required>
+        <input type="number" step="any" name="Classes" placeholder="Classes" required>
+        <input type="number" step="any" name="Region" placeholder="Region" required>
+
+        <button type="submit">🚀 Predict FWI</button>
+    </form>
+
+    {% if results %}
+    <div class="result">
+        🔮 Predicted Forest Weather Index: <strong>{{ results }}</strong>
+    </div>
+    {% endif %}
+</div>
+
+</body>
 </html>

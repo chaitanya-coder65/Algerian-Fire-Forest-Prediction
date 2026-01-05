@@ -1,1 +1,68 @@
-<h1> Welcome to home Page</h1>
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <title>FWI Predictor</title>
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+
+    <style>
+        body {
+            margin: 0;
+            height: 100vh;
+            background: radial-gradient(circle at top, #0f2027, #000);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: 'Segoe UI', sans-serif;
+            color: white;
+        }
+
+        .hero {
+            text-align: center;
+            animation: fadeIn 1.5s ease;
+        }
+
+        h1 {
+            font-size: 3rem;
+            letter-spacing: 1px;
+        }
+
+        p {
+            color: #9aa5b1;
+            margin-top: 10px;
+            font-size: 1.1rem;
+        }
+
+        a {
+            display: inline-block;
+            margin-top: 30px;
+            padding: 14px 40px;
+            background: linear-gradient(135deg, #00ffc6, #00b4ff);
+            color: #000;
+            font-weight: bold;
+            text-decoration: none;
+            border-radius: 30px;
+            transition: transform 0.3s, box-shadow 0.3s;
+        }
+
+        a:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 0 30px #00ffc6;
+        }
+
+        @keyframes fadeIn {
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
+        }
+    </style>
+</head>
+<body>
+
+<div class="hero">
+    <h1>🔥 Forest Weather Index</h1>
+    <p>AI-powered Fire Risk Prediction System</p>
+    <a href="{{ url_for('predict_datapoint') }}">Start Prediction</a>
+</div>
+
+</body>
+</html>
