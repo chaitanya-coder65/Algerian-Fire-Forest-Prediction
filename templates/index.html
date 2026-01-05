@@ -2,67 +2,109 @@
 <html lang="en">
 <head>
     <meta charset="UTF-8">
-    <title>FWI Predictor</title>
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-
+    <title>Forest Fire Analysis | Welcome</title>
     <style>
+        :root {
+            --primary: #2563eb;
+            --bg: #f8fafc;
+            --card: #ffffff;
+            --text-main: #1e293b;
+            --text-sub: #64748b;
+        }
         body {
+            background-color: var(--bg);
+            color: var(--text-main);
+            font-family: 'Inter', -apple-system, sans-serif;
             margin: 0;
-            height: 100vh;
-            background: radial-gradient(circle at top, #0f2027, #000);
             display: flex;
-            align-items: center;
             justify-content: center;
-            font-family: 'Segoe UI', sans-serif;
-            color: white;
+            align-items: center;
+            height: 100vh;
         }
-
-        .hero {
+        .welcome-card {
             text-align: center;
-            animation: fadeIn 1.5s ease;
+            max-width: 600px;
+            padding: 60px 40px;
+            background: var(--card);
+            border-radius: 20px;
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.05);
+            border: 1px solid #e2e8f0;
         }
-
         h1 {
-            font-size: 3rem;
-            letter-spacing: 1px;
+            font-size: 2.5rem;
+            margin-bottom: 15px;
+            color: var(--text-main);
+            letter-spacing: -1px;
         }
-
+        h1 span {
+            color: var(--primary);
+        }
         p {
-            color: #9aa5b1;
-            margin-top: 10px;
+            color: var(--text-sub);
             font-size: 1.1rem;
+            line-height: 1.6;
+            margin-bottom: 40px;
         }
-
-        a {
-            display: inline-block;
-            margin-top: 30px;
-            padding: 14px 40px;
-            background: linear-gradient(135deg, #00ffc6, #00b4ff);
-            color: #000;
-            font-weight: bold;
+        .btn-start {
+            background: var(--primary);
+            color: white;
+            padding: 16px 40px;
+            border-radius: 8px;
             text-decoration: none;
-            border-radius: 30px;
-            transition: transform 0.3s, box-shadow 0.3s;
+            font-weight: 700;
+            font-size: 1.1rem;
+            transition: all 0.2s ease;
+            display: inline-block;
         }
-
-        a:hover {
-            transform: translateY(-4px);
-            box-shadow: 0 0 30px #00ffc6;
+        .btn-start:hover {
+            background: #1d4ed8;
+            transform: translateY(-2px);
+            box-shadow: 0 8px 20px rgba(37, 99, 235, 0.2);
         }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
+        .footer-info {
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid #f1f5f9;
+            display: flex;
+            justify-content: space-around;
+            color: var(--text-sub);
+            font-size: 0.9rem;
+        }
+        .stat-item b {
+            display: block;
+            color: var(--text-main);
+            font-size: 1.1rem;
         }
     </style>
 </head>
 <body>
 
-<div class="hero">
-    <h1>🔥 Forest Weather Index</h1>
-    <p>AI-powered Fire Risk Prediction System</p>
-    <a href="{{ url_for('predict_datapoint') }}">Start Prediction</a>
-</div>
+    <div class="welcome-card">
+        <h1>Algerian <span>Forest Fire</span> <br>Prediction System</h1>
+        <p>
+            An intelligent dashboard for monitoring and predicting the 
+            <b>Fire Weather Index (FWI)</b>. By analyzing meteorological data 
+            from the Bejaia and Sidi-Bel Abbes regions, we help assess wildfire risk levels accurately.
+        </p>
+
+        <a href="/predictdata" class="btn-start">Open FWI Predictor</a>
+
+        <div class="footer-info">
+            <div class="stat-item">
+                <b>Accuracy</b>
+                Ridge Regression
+            </div>
+            <div class="stat-item">
+                <b>Regions</b>
+                Bejaia & Sidi-Bel
+            </div>
+            <div class="stat-item">
+                <b>Model</b>
+                Standardized ML
+            </div>
+        </div>
+    </div>
 
 </body>
 </html>
